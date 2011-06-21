@@ -1,16 +1,16 @@
 "use strict";
 
 //System and File I/O modules
-var _util = require("util");
-var _fileSystem = require("fs");
-var _path = require("path");
-var _eventEmitter = require("events").EventEmitter;
+var _sys = require("../System");
+var _util = _sys.Util;
+var _fileSystem = _sys.FileSystem;
+var _path = _sys.Path;
+var _eventEmitter = _sys.EventEmitter;
 
 //Networking modules
-var _url = require("url");
-var _http = require("http");
-var _io = require("socket.io");
-
+var _url = _sys.URL;
+var _http = _sys.HTTP;
+var _socketIO = _sys.SocketIO;
 
 //Game Engine Modules
 var Client = require("./Client");
@@ -23,7 +23,7 @@ var _defaultOptions = 		//Default server variables
 	, defaultFile: ""
 	, log: _util.print
 }
-var _httpMethods = ["GET"];
+var _httpMethods = ["GET", "POST"];
 
 //Load in known mime-types
 var _mimeTypes = {};
@@ -185,7 +185,7 @@ Server.prototype.start = function()
 
 	//Create the Socket.IO object and assign it to the HTTP server
 	//with a callback to the onClientConnect function
-	var socketio = _io.listen(server, {log: function(message){self.log(message);} });
+	var socketio = _socketIO.listen(server, {log: function(message){self.log(message);} });
 	socketio.on("clientConnect", function(client) { onClientConnect.call(self, client); });
 
 	//Remeber the objects

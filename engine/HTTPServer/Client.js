@@ -1,13 +1,6 @@
 //System and File I/O modules
-var _util = require("util");
-var _fileSystem = require("fs");
-var _path = require("path");
-var _eventEmitter = require("events").EventEmitter;
-
-//Networking modules
-var _url = require("url");
-var _http = require("http");
-var _io = require("socket.io");
+var _sys = require("../System");
+var _eventEmitter = _sys.EventEmitter;
 
 /** 
   * A client class using the HTTP protocol for communcation between the

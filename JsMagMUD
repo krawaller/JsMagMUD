@@ -1,7 +1,7 @@
 #!/usr/local/bin/node
 "use strict";
 
-var _util = require("./engine/API").Util;
+var _util = require("./engine/System").Util;
 var _settingsPath = "./JsMagMUD.settings";
 
 /**
@@ -42,18 +42,6 @@ function createServer(settings)
 
 	return server;
 }
-
-/**
-  * Create the sandbox to be used
-  * @param {Object} settings The settings for the sandbox component
-  */
-function createSandbox(settings)
-{
-	var sandbox = require(settings.file).createSandbox(settings);
-	
-	return sandbox;
-}
-
 
 /**
   * JsMag MUD main start-up function
