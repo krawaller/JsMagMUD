@@ -30,6 +30,42 @@ body
 	top: 30px;
 }
 
+#divProfile
+{
+	position: absolute;
+	left: 715px;
+	top: 30px;
+	height: 91px;
+	width: 250px;
+}
+
+#divProfile .icon
+{
+	position: absolute;
+}
+
+#divProfile .content
+{
+	position: absolute;
+	left: 90px;
+	top: 15px;
+	height: 91px;
+}
+
+#divProfile .content .name
+{
+	font-family: Times New Roman, Serif;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+#divProfile .content .title
+{
+	font-family: Times New Roman, Serif;
+	font-size: 12pt;
+	font-weight: normal;
+}
+
 #divConsole
 {
 	position: absolute;
