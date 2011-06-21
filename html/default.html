@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<link type="text/css" rel="Stylesheet" media="screen" href="css/styles.css" />
+
+	<script src="js/jquery-1.5.1.js" type="text/javascript"></script>
+	<script src="js/jquery.mousewheel.js" type="text/javascript"></script>
+
+	<link type="text/css" rel="Stylesheet" media="screen" href="css/jquery.jscrollpane.css" />
+	<link type="text/css" rel="Stylesheet" media="screen" href="css/jquery.jscrollpane.jsmagmud.css" />
+	<script src="js/jquery.jscrollpane.min.js" type="text/javascript"></script>
+	
+	<script src="js/animationFrame.js" type="text/javascript"></script>
+
+	<script src="socket.io/socket.io.js" type="text/javascript"></script>
+
+</head>
+<body>
+	<div id="divPageContainer">
+		<div id="divTitle">
+			<img src="images/logo.png" alt="JsMagMUD" />
+		</div>
+		<div id="divConsole">
+<p>Welcome to JsMagMUD</p>
+<p>JsMagMUD is a community project for the members of, but not exclusive to, JsMag.  The purpose is to implement a fully functional MUD server and client using nothing more than JavaScript, HTML, and CSS.</p>
+<p>The server portion of JsMagMUD is 100% JavaScript running on a Node.js server</p>
+<p>The client portion of JsMagMUD is HTML, CSS, and JavaScript.  The only exception is where a Flash compontent is used when WebSockets, or another better alternative to Flash, is not available for communications.</p>
+<p class="Echo">look</p>
+<p>You are standing in a non-descript room.  The walls are white and there are no doors or windows.  How you even got here is a mystery.<p>
+<p>In this room with you is: Krem</p>
+<p class="Echo">say Hey there Krem.  What's new?</p>
+<p>Krem looks at you.</p>
+<p>You hear Krem mumble something to himself and suddenly a flame engulfs Krem's body!  Within moments, all signs of Krem are gone.</p>
+		</div>
+		
+		<div id="divCommand">
+		<input type="text" id="txtCommand" />	
+		</div>
+		<div id="divSideBar">
+			<div id="divMap" style="display: none; text-align: center; color: black; font-weight: bold;"><br /><br />An overhead wilderness map can be shown here</div>
+			<div id="divInventory" style="display: none;">
+				<div class="Item">Inventory Item 1</div>
+				<div class="Item">Inventory Item 2</div>
+				<div class="Item">Inventory Item 3</div>
+				<div class="Item">Inventory Item 4</div>
+				<div class="Item">Inventory Item 5</div>
+				<div class="Item">Inventory Item 6</div>
+				<div class="Item">Inventory Item 7</div>
+				<div class="Item">Inventory Item 8</div>
+				<div class="Item">Inventory Item 9</div>
+				<div class="Item">Inventory Item 10</div>
+			</div>
+			<div id="divStatus" style="display: none; text-align: center; color: black; font-weight: bold;"><br /><br />Visuals of the player's status are shown here</div>
+		</div>
+		<div id="btnMap" control="divMap" class="SideBarButton"></div>
+		<div id="btnInventory" control="divInventory" class="SideBarButton"></div>
+		<div id="btnStatus" control="divStatus" class="SideBarButton"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var scroll_options =
+			{
+				verticalDragMaxHeight: 25
+				, verticalDragMinHeight: 25
+				, horizontalDragMaxWidth: 25
+				, horizontalDragMinWidth: 25
+			};
+			$("#divConsole").jScrollPane(scroll_options);
+			$("#divSideBar").jScrollPane(scroll_options);
+			
+			var $_currentButton = null;
+			var $_currentSideBarContent = null;
+			$(".SideBarButton").click(function()
+				{
+					if($_currentButton)
+					{
+						$_currentSideBarContent.hide();
+						$_currentButton.removeClass("active");
+					}
+
+					$_currentButton = $(this);
+					$_currentButton.addClass("active");
+					$_currentSideBarContent = $("#" + $_currentButton.attr("control"));
+					$_currentSideBarContent.show();
+					
+					$("#divSideBar").data("jsp").reinitialise();
+				});
+			$("#btnStatus").click();
+			
+		});
+	</script>
+</body>
+</html>

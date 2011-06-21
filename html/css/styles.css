@@ -1,0 +1,148 @@
+*
+{
+	font-family: Verdana, Sans-Serif;
+	font-size: 12pt;
+	font-weight: normal;
+	color: white;
+}
+
+body
+{
+	background-color: black;
+}
+
+#divPageContainer
+{
+	background-image: url("images/background.png");
+	background-repeat: norepeat;
+	width: 996px;
+	height: 613px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	position: relative;
+}
+
+#divTitle
+{
+	position: absolute;
+	left: 25px;
+	top: 30px;
+}
+
+#divConsole
+{
+	position: absolute;
+	left: 16px;
+	top: 130px;
+	width: 674px;
+	height: 380px;
+	
+	padding: 5px;
+	overflow: hidden;
+}
+
+#divConsole p
+{
+}
+
+#divConsole p.Echo
+{
+	color: Aqua;
+	font-weight: bold;
+	padding-left: 1em;
+}
+
+
+
+#divSideBar
+{
+	position: absolute;
+	left: 715px;
+	top: 130px;
+	width: 250px;
+	height: 350px;
+
+	padding: 5px;
+	overflow: hidden;
+}
+
+#divCommand
+{
+	position: absolute;
+	left: 16px;
+	top: 530px;
+	width: 684px;
+	height: 33px;
+	line-height: 33px;
+	vertical-align: middle;
+}
+
+#txtCommand
+{
+	font-weight: bold;
+	width: 672px;
+	height: 15px;
+	padding: 5px;
+
+	background-color: transparent;
+	border: none 0px transparent;
+}
+
+.SideBarButton
+{
+	background-image: url(images/buttons.png);
+	position: absolute;
+	top: 500px;
+	height: 66px;
+	cursor: pointer;
+}
+
+#btnMap
+{
+	background-position: 0 0;
+	left: 715px;
+	width: 74px;
+}
+
+#btnMap:hover
+, #btnMap.active
+{
+	background-position: 0 -66px;
+}
+
+#btnInventory
+{
+	background-position: -75px 0;
+	left: 789px;
+	width: 104px;
+}
+
+#btnInventory:hover
+, #btnInventory.active
+{
+	background-position: -75px -66px;
+}
+
+#btnStatus
+{
+	background-position: -179px 0;
+	left: 885px;
+	width: 103px;
+}
+
+#btnStatus:hover
+, #btnStatus.active
+{
+	background-position: -179px -66px;
+}
+
+#divInventory .Item
+{
+	width: 200px;
+	border: solid 1px gray;
+	color: black;
+	font-weight: bold;
+	height: 50px;
+	margin: 5px;
+}

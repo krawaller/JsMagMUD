@@ -1,0 +1,46 @@
+var _path = require("path");
+
+
+var EngineSettings = 
+{
+	/**
+	  * Defines the settings used for the HTTP Server
+	  */
+	communicationServer: 
+	{
+		file: "./engine/HTTPServer"
+		
+		, port: 5000
+		, basePath: _path.resolve(__dirname, "./html")
+		, defaultFile: "webclient.html"
+	}
+
+	/**
+	  * Defines the settings used for the in-game script compiler
+	  */
+	, compiler:
+	{
+		sandbox:
+		{
+			file: "./engine/Sandbox"
+			
+			, components:
+			[
+				{ name: "System.FileSystem", file: "./sandbox/System.FileSystem" }
+			]
+		}
+	}
+
+	/**
+	  * Defines the settings for the actual game code
+	  */
+	, game:
+	{
+		/**
+		  * Defines the location of the game master object
+		  */
+		gameMaster: "/system/master.js"
+	}
+};
+
+module.exports = EngineSettings;

@@ -1,0 +1,77 @@
+#!/usr/local/bin/node
+"use strict";
+
+var _util = require("./engine/API").Util;
+var _settingsPath = "./JsMagMUD.settings";
+
+/**
+  * Outputs a log to the console
+  */
+function log(message, component)
+{
+	if(!component)
+		component = "[general]";
+	else
+		component = "[" + component + "]";
+		
+	_util.print(component + " " + message + "\n");
+}
+
+/**
+  * Creates the Communications Server used by the MUD
+  * @param {Object} settings The settings for the communications server
+  */
+function createServer(settings)
+{
+	var server = require(settings.file).createServer(settings);
+
+	server.on("clientConnected", function(client)
+	{
+		client.send({type:"message", data:"Welcome to JsMag MUD"});
+
+		client.on("message", function(message)
+		{
+			if(message.source)
+				message.source = message.source.ID;
+
+			server.broadcast(message);
+		});
+	});
+
+	server.on("log", function(message) { log(message, "CommunicationServer"); });
+
+	return server;
+}
+
+/**
+  * Create the sandbox to be used
+  * @param {Object} settings The settings for the sandbox component
+  */
+function createSandbox(settings)
+{
+	var sandbox = require(settings.file).createSandbox(settings);
+	
+	return sandbox;
+}
+
+
+/**
+  * JsMag MUD main start-up function
+  */
+function start(settings)
+{
+	//Create the communications server and bind to events
+	var server = createServer(settings.communicationServer);
+	if(server)
+		server.start();
+}
+
+//The following is simply the main execution function.
+(function()
+{
+	//Load up the engine settings
+	var settings = require(_settingsPath);
+
+	//Start Up the MUD Engine
+	start(settings);
+})();

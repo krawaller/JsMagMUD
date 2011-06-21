@@ -1,0 +1,36 @@
+.jspHorizontalBar,
+.jspVerticalBar,
+.jspTrack
+{
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 25px;
+}
+
+.jspDrag
+{
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#divConsole .jspTrack
+{
+	background-image: url(images/sliderBar_grey.png);
+}
+
+#divConsole .jspDrag
+{
+	background-image: url(images/slideHandle_grey.png);
+}
+
+#divSideBar .jspTrack
+{
+	background-image: url(images/sliderBar_oj.png);
+}
+
+#divSideBar .jspDrag
+{
+	background-image: url(images/slideHandle_oj.png);
+}
